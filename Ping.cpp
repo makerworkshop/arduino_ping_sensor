@@ -10,19 +10,20 @@ Ping::Ping(uint8_t pin)
 
 // Duration returns the number of milliseconds that takes an emitted pulse to
 // bounce back to the PING))) sensor. This number is directly proportional to
-// the travelled distance and can be converted to centimeters or inches by
-// wrapping this function inside PING_DISTANCE_CM or PING_DISTANCE_IN.
+// the travelled distance and can be converted into millimeters, centimeters or
+// inches by wrapping this function inside PING_DISTANCE_MM, PING_DISTANCE_CM
+// or PING_DISTANCE_IN.
 //
 // Example:
 //
-// ping->Duration() * PING_DISTANCE_CM
+// PING_DISTANCE_CM(ping->Duration())
 //
 // or
 //
-// ping->Duration() * PING_DISTANCE_IN
+// PING_DISTANCE_IN(ping->Duration())
 //
-// Duration will return PING_MAX_DISTANCE in case the distance could not be
-// measured.
+// Duration will return PING_UNKNOWN_DISTANCE in case the distance could not be
+// measured (either too far or too close to an obstacle).
 long Ping::Duration()
 {
   long d;
