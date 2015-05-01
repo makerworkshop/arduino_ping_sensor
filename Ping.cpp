@@ -30,6 +30,9 @@ long Ping::Duration()
 
   // Emiting a pulse.
   pinMode(this->pin, OUTPUT);
+  digitalWrite(this->pin, LOW);
+  delayMicroseconds(2);
+
   digitalWrite(this->pin, HIGH);
   delayMicroseconds(5);
   digitalWrite(this->pin, LOW);
@@ -41,7 +44,7 @@ long Ping::Duration()
   d = pulseIn(this->pin, HIGH) / 2;
 
   if (d > PING_MAX_DISTANCE) {
-    return PING_UNKNOWN_DISTANCE;
+    return PING_MAX_DISTANCE;
   }
 
   return d;
